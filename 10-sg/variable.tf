@@ -15,8 +15,11 @@ variable "sg_names" {
     #Backend
     "catalogue", "user", "cart", "shipping", "payment",
 
+    #Frontend
+    "frontend",
+
     #Backend ALB
-    "backent_alb",
+    "backend_alb",
     
     #Frontend ALB
     "frontend_alb",
