@@ -1,8 +1,8 @@
-# bastion:
-# - name: bastion_internet
-#   port: 22
-#   src: internet
-#   dest: bastion
+bastion:
+- name: bastion_internet
+  port: 22
+  src: internet
+  dest: bastion
 mongodb:
 - name: mongodb_bastion
   port: 22
