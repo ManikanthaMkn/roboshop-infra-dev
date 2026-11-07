@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket       = "mk-devops-remote-state-2026"
-    key          = "devops-vpc-test-infra"
+    key          = "roboshop-dev-vpc-new"
     region       = "us-east-1"
     encrypt      = true
     use_lockfile = true
