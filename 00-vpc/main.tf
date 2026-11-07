@@ -1,7 +1,7 @@
 module "vpc" {
-  source = "../../terraform-aws-vpc"
-  project = var.project
-  environment = var.environment
+  source              = "../../terraform-aws-vpc"
+  project             = var.project
+  environment         = var.environment
   is_peering_required = true
 
   public_subnet_cidrs   = var.public_subnet_cidrs
