@@ -10,7 +10,7 @@ resource "aws_security_group_rule" "bastion_internet" {
 }
 
 resource "aws_security_group_rule" "mongodb_bastion" {
-    type = ingress
+    type = "ingress"
     from_port = 22
     to_port = 22
     protocol = "tcp"
@@ -20,7 +20,7 @@ resource "aws_security_group_rule" "mongodb_bastion" {
 }
 
 resource "aws_security_group_rule" "mongodb_catalogue" {
-    type = ingress
+    type = "ingress"
     from_port = 27017
     to_port = 27017
     protocol = "tcp"
@@ -29,7 +29,7 @@ resource "aws_security_group_rule" "mongodb_catalogue" {
 }
 
 resource "aws_security_group_rule" "mongodb_user" {
-    type = ingress
+    type = "ingress"
     from_port = 27017
     to_port = 27017
     protocol = "tcp"
