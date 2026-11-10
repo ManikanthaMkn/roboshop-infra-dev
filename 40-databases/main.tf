@@ -8,11 +8,11 @@ resource "aws_instance" "mongodb" {
     volume_size = 50
     volume_type = "gp3"
     tags = merge(
-    {
-      Name = "${var.project}-${var.environment}-mongodb"
-    },
+      {
+        Name = "${var.project}-${var.environment}-mongodb"
+      },
     local.common_tags
-  )
+    )
   }
   
 
