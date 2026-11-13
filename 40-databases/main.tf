@@ -11,7 +11,7 @@ resource "aws_instance" "mongodb" {
     local.common_tags
   )
 }
-
+#Mongodb configure
 resource "terraform_data" "mongodb" {
   triggers_replace = [
     aws_instance.mongodb.id
