@@ -11,7 +11,7 @@ resource "aws_instance" "bastion" {
     volume_type = "gp3"
     tags = merge(
       {
-        Name = "${var.project}-${var.environment}-mongodb"
+        Name = "${var.project}-${var.environment}-bastion"
       },
       local.common_tags
     )
