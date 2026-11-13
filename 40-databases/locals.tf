@@ -20,5 +20,3 @@ locals {
     for name in ["${var.project}", "${var.environment}", "mysql"] : title(name)
   ])
 }
-
-#chala issue idi
