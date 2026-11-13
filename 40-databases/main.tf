@@ -95,6 +95,9 @@ resource "aws_instance" "mysql" {
 }
 
 resource "terraform_data" "mysql" {
+  depends_on = [
+    aws_security_group_rule.mysql_bastion
+  ]
   triggers_replace = [
     aws_instance.mysql.id
   ]
