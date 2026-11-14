@@ -40,3 +40,22 @@ resource "aws_iam_instance_profile" "mysql" {
   name = "${var.project}-${var.environment}-mysql"
   role = aws_iam_role.mysql.name
 }
+
+#RabbitMQ
+resource "aws_iam_policy" "rabbitmq" {
+    name = local.rabbitmq_policy_name
+    description = "A policy for rabbitmq EC2 instance"
+    policy = templatefile("rabbitmq-iam-policy.json", {
+        environment = var.environment
+    })  
+}
+
+resource "aws_iam_role_policy_attachment" "rabbitmq" {
+  role       = aws_iam_role.rabbitmq.name
+  policy_arn = aws_iam_policy.rabbitmq.arn
+}
+
+resource "aws_iam_instance_profile" "rabbitmq" {
+  name = "${var.project}-${var.environment}-rabbitmq"
+  role = aws_iam_role.rabbitmq.name
+}
