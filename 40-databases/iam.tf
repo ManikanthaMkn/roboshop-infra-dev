@@ -23,10 +23,10 @@ resource "aws_iam_role" "mysql" {
     )  
 }
 
-resource "aws_iam_policy" "mysql" {
-    name = local.mysql_policy_name
-    description = "A policy for MySQL EC2 instance"
-    policy = templatefile("mysql-iam-policy.json", {
+resource "aws_iam_policy" "rabbitmq" {
+    name = local.rabbitmq_policy_name
+    description = "A policy for rabbitmq EC2 instance"
+    policy = templatefile("rabbitmq-iam-policy.json", {
         environment = var.environment
     })  
 }
