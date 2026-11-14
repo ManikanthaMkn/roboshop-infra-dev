@@ -25,6 +25,6 @@ resource "aws_iam_role" "mysql" {
 
 resource "aws_iam_policy" "mysql" {
     name = local.mysql_policy_name
-    description = "A policy for MySQL Ec2 instance"
+    description = "A policy for MySQL EC2 instance"
     policy = file("mysql-iam-policy.json")  
 }
