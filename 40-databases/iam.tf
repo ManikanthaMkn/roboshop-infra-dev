@@ -1,85 +1,96 @@
+
+# MYSQL IAM ROLE
 resource "aws_iam_role" "mysql" {
-    name = local.mysql_role_name
-    
-    assume_role_policy = jsonencode({
-        Version = "2012-10-17"
-        Statement = [
-            {
-                Action ="sts:AssumeRole"
-                Effect = "Allow"
-                Sid = ""
-                Principal = {
-                    Service = "ec2.amazonaws.com"
-                }
-            },
-        ]
-    })
+  name = local.mysql_role_name
 
-    tags = merge (
-        {
-            Name =local.mysql_role_name
-        },
-        local.common_tags
-    )  
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  tags = merge(
+    {
+      Name = local.mysql_role_name
+    },
+    local.common_tags
+  )
 }
 
-resource "aws_iam_policy" "rabbitmq" {
-    name = local.rabbitmq_policy_name
-    description = "A policy for rabbitmq EC2 instance"
-    policy = templatefile("rabbitmq-iam-policy.json", {
-        environment = var.environment
-    })  
+# MYSQL IAM POLICY
+resource "aws_iam_policy" "mysql" {
+  name        = local.mysql_policy_name
+  description = "A policy for MySQL EC2 instance"
+
+  policy = templatefile("mysql-iam-policy.json", {
+    environment = var.environment
+  })
 }
 
+# MYSQL IAM POLICY ATTACHMENT
 resource "aws_iam_role_policy_attachment" "mysql" {
   role       = aws_iam_role.mysql.name
   policy_arn = aws_iam_policy.mysql.arn
 }
 
+# MYSQL INSTANCE PROFILE
 resource "aws_iam_instance_profile" "mysql" {
   name = "${var.project}-${var.environment}-mysql"
   role = aws_iam_role.mysql.name
 }
 
-#RabbitMQ
-resource "aws_iam_role" "mysql" {
-    name = local.mysql_role_name
-    
-    assume_role_policy = jsonencode({
-        Version = "2012-10-17"
-        Statement = [
-            {
-                Action ="sts:AssumeRole"
-                Effect = "Allow"
-                Sid = ""
-                Principal = {
-                    Service = "ec2.amazonaws.com"
-                }
-            },
-        ]
-    })
 
-    tags = merge (
-        {
-            Name =local.mysql_role_name
-        },
-        local.common_tags
-    ) 
+# RABBITMQ IAM ROLE
+resource "aws_iam_role" "rabbitmq" {
+  name = local.rabbitmq_role_name
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  tags = merge(
+    {
+      Name = local.rabbitmq_role_name
+    },
+    local.common_tags
+  )
 }
 
+# RABBITMQ IAM POLICY
 resource "aws_iam_policy" "rabbitmq" {
-    name = local.rabbitmq_policy_name
-    description = "A policy for rabbitmq EC2 instance"
-    policy = templatefile("rabbitmq-iam-policy.json", {
-        environment = var.environment
-    })  
+  name        = local.rabbitmq_policy_name
+  description = "A policy for RabbitMQ EC2 instance"
+
+  policy = templatefile("rabbitmq-iam-policy.json", {
+    environment = var.environment
+  })
 }
 
+# RABBITMQ IAM POLICY ATTACHMENT
 resource "aws_iam_role_policy_attachment" "rabbitmq" {
   role       = aws_iam_role.rabbitmq.name
   policy_arn = aws_iam_policy.rabbitmq.arn
 }
 
+# RABBITMQ INSTANCE PROFILE
 resource "aws_iam_instance_profile" "rabbitmq" {
   name = "${var.project}-${var.environment}-rabbitmq"
   role = aws_iam_role.rabbitmq.name
