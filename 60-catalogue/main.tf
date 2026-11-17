@@ -4,7 +4,7 @@ resource "aws_instance" "catalogue" {
   subnet_id              = local.private_subnet_id
   vpc_security_group_ids = [local.catalogue_sg_id]
 
-  iam_instance_profile = aws_iam_instance_profile.rabbitmq.name
+  iam_instance_profile = aws_iam_instance_profile.catalogue.name
 
   tags = merge(
     {
