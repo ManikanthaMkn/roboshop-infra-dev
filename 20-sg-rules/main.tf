@@ -245,7 +245,7 @@ resource "aws_security_group_rule" "backend_alb_catalogue" {
   protocol          = "tcp"
   # Where traffic is coming from
   cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.catalogue_alb_sg_id
+  source_security_group_id = local.catalogue_sg_id
   security_group_id = local.backend_alb_sg_id
 }
 
@@ -256,7 +256,7 @@ resource "aws_security_group_rule" "backend_alb_user" {
   protocol          = "tcp"
   # Where traffic is coming from
   cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.user_alb_sg_id
+  source_security_group_id = local.user_sg_id
   security_group_id = local.backend_alb_sg_id
 }
 
@@ -267,7 +267,7 @@ resource "aws_security_group_rule" "backend_alb_cart" {
   protocol          = "tcp"
   # Where traffic is coming from
   cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.cart_alb_sg_id
+  source_security_group_id = local.cart_sg_id
   security_group_id = local.backend_alb_sg_id
 }
 
@@ -278,7 +278,7 @@ resource "aws_security_group_rule" "backend_alb_shipping" {
   protocol          = "tcp"
   # Where traffic is coming from
   cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.shipping_alb_sg_id
+  source_security_group_id = local.shipping_sg_id
   security_group_id = local.backend_alb_sg_id
 }
 
@@ -289,7 +289,7 @@ resource "aws_security_group_rule" "backend_alb_payment" {
   protocol          = "tcp"
   # Where traffic is coming from
   cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.payment_alb_sg_id
+  source_security_group_id = local.payment_sg_id
   security_group_id = local.backend_alb_sg_id
 }
 
@@ -299,7 +299,6 @@ resource "aws_security_group_rule" "backend_alb_frontend" {
   to_port           = 80
   protocol          = "tcp"
   # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
   source_security_group_id = local.frontend_alb_sg_id
   security_group_id = local.backend_alb_sg_id
 }
