@@ -47,27 +47,27 @@ resource "aws_security_group_rule" "redis_bastion" {
     security_group_id = local.redis_sg_id
 }
 
-resource "aws_security_group_rule" "redis_user" {
-  type              = "ingress"
-  from_port         = 6379
-  to_port           = 6379
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.user_sg_id
-  security_group_id = local.frontend_alb_sg_id
-}
+# resource "aws_security_group_rule" "redis_user" {
+#   type              = "ingress"
+#   from_port         = 6379
+#   to_port           = 6379
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.user_sg_id
+#   security_group_id = local.frontend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "redis_cart" {
-  type              = "ingress"
-  from_port         = 6379
-  to_port           = 6379
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.cart_sg_id
-  security_group_id = local.frontend_alb_sg_id
-}
+# resource "aws_security_group_rule" "redis_cart" {
+#   type              = "ingress"
+#   from_port         = 6379
+#   to_port           = 6379
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.cart_sg_id
+#   security_group_id = local.frontend_alb_sg_id
+# }
 
 resource "aws_security_group_rule" "mysql_bastion" {
     type = "ingress"
@@ -128,189 +128,189 @@ resource "aws_security_group_rule" "frontend_alb_public" {
   security_group_id = local.frontend_alb_sg_id
 }
 
-resource "aws_security_group_rule" "mysql_shipping" {
-  type              = "ingress"
-  from_port         = 3306
-  to_port           = 3306
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.shipping_sg_id
-  security_group_id = local.frontend_alb_sg_id
-}
+# resource "aws_security_group_rule" "mysql_shipping" {
+#   type              = "ingress"
+#   from_port         = 3306
+#   to_port           = 3306
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.shipping_sg_id
+#   security_group_id = local.frontend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "rabbitmq_payment" {
-  type              = "ingress"
-  from_port         = 5672
-  to_port           = 5672
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.payment_sg_id
-  security_group_id = local.frontend_alb_sg_id
-}
+# resource "aws_security_group_rule" "rabbitmq_payment" {
+#   type              = "ingress"
+#   from_port         = 5672
+#   to_port           = 5672
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.payment_sg_id
+#   security_group_id = local.frontend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "user_bastion" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.bastion_sg_id
-  security_group_id = local.user_sg_id
-}
+# resource "aws_security_group_rule" "user_bastion" {
+#   type              = "ingress"
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.bastion_sg_id
+#   security_group_id = local.user_sg_id
+# }
 
-resource "aws_security_group_rule" "user_backend_alb" {
-  type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.backend_alb_sg_id
-  security_group_id = local.user_sg_id
-}
+# resource "aws_security_group_rule" "user_backend_alb" {
+#   type              = "ingress"
+#   from_port         = 8080
+#   to_port           = 8080
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.backend_alb_sg_id
+#   security_group_id = local.user_sg_id
+# }
 
-resource "aws_security_group_rule" "cart_bastion" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.bastion_sg_id
-  security_group_id = local.cart_sg_id
-}
+# resource "aws_security_group_rule" "cart_bastion" {
+#   type              = "ingress"
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.bastion_sg_id
+#   security_group_id = local.cart_sg_id
+# }
 
-resource "aws_security_group_rule" "cart_backend_alb" {
-  type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.backend_alb_sg_id
-  security_group_id = local.cart_sg_id
-}
+# resource "aws_security_group_rule" "cart_backend_alb" {
+#   type              = "ingress"
+#   from_port         = 8080
+#   to_port           = 8080
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.backend_alb_sg_id
+#   security_group_id = local.cart_sg_id
+# }
 
-resource "aws_security_group_rule" "shipping_bastion" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.bastion_sg_id
-  security_group_id = local.shipping_sg_id
-}
+# resource "aws_security_group_rule" "shipping_bastion" {
+#   type              = "ingress"
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.bastion_sg_id
+#   security_group_id = local.shipping_sg_id
+# }
 
-resource "aws_security_group_rule" "shipping_backend_alb" {
-  type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.backend_alb_sg_id
-  security_group_id = local.shipping_sg_id
-}
+# resource "aws_security_group_rule" "shipping_backend_alb" {
+#   type              = "ingress"
+#   from_port         = 8080
+#   to_port           = 8080
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.backend_alb_sg_id
+#   security_group_id = local.shipping_sg_id
+# }
 
-resource "aws_security_group_rule" "payment_bastion" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.bastion_sg_id
-  security_group_id = local.payment_sg_id
-}
+# resource "aws_security_group_rule" "payment_bastion" {
+#   type              = "ingress"
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.bastion_sg_id
+#   security_group_id = local.payment_sg_id
+# }
 
-resource "aws_security_group_rule" "payment_backend_alb" {
-  type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.backend_alb_sg_id
-  security_group_id = local.payment_sg_id
-}
+# resource "aws_security_group_rule" "payment_backend_alb" {
+#   type              = "ingress"
+#   from_port         = 8080
+#   to_port           = 8080
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.backend_alb_sg_id
+#   security_group_id = local.payment_sg_id
+# }
 
-resource "aws_security_group_rule" "backend_alb_catalogue" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.catalogue_alb_sg_id
-  security_group_id = local.backend_alb_sg_id
-}
+# resource "aws_security_group_rule" "backend_alb_catalogue" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.catalogue_alb_sg_id
+#   security_group_id = local.backend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "backend_alb_user" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.user_alb_sg_id
-  security_group_id = local.backend_alb_sg_id
-}
+# resource "aws_security_group_rule" "backend_alb_user" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.user_alb_sg_id
+#   security_group_id = local.backend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "backend_alb_cart" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.cart_alb_sg_id
-  security_group_id = local.backend_alb_sg_id
-}
+# resource "aws_security_group_rule" "backend_alb_cart" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.cart_alb_sg_id
+#   security_group_id = local.backend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "backend_alb_shipping" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.shipping_alb_sg_id
-  security_group_id = local.backend_alb_sg_id
-}
+# resource "aws_security_group_rule" "backend_alb_shipping" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.shipping_alb_sg_id
+#   security_group_id = local.backend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "backend_alb_payment" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.payment_alb_sg_id
-  security_group_id = local.backend_alb_sg_id
-}
+# resource "aws_security_group_rule" "backend_alb_payment" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.payment_alb_sg_id
+#   security_group_id = local.backend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "backend_alb_frontend" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.frontend_alb_sg_id
-  security_group_id = local.backend_alb_sg_id
-}
+# resource "aws_security_group_rule" "backend_alb_frontend" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.frontend_alb_sg_id
+#   security_group_id = local.backend_alb_sg_id
+# }
 
-resource "aws_security_group_rule" "frontend_frontend_alb" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  # Where traffic is coming from
-  cidr_blocks       = ["0.0.0.0/0"]
-  source_security_group_id = local.frontend_alb_sg_id
-  security_group_id = local.frontend_sg_id
-}
+# resource "aws_security_group_rule" "frontend_frontend_alb" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   # Where traffic is coming from
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   source_security_group_id = local.frontend_alb_sg_id
+#   security_group_id = local.frontend_sg_id
+# }
