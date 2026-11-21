@@ -14,9 +14,4 @@ locals {
   shipping_sg_id = data.aws_ssm_parameter.shipping_sg_id.value
   payment_sg_id = data.aws_ssm_parameter.payment_sg_id.value
   frontend_sg_id = data.aws_ssm_parameter.frontend_sg_id.value
-  # cart_alb_sg_id = data.aws_ssm_parameter.cart_alb_sg_id.value
-  # shipping_alb_sg_id = data.aws_ssm_parameter.shipping_alb_sg_id.value
-  # user_alb_sg_id = data.aws_ssm_parameter.user_alb_sg_id.value
-  # catalogue_alb_sg_id  = data.aws_ssm_parameter.catalogue_alb_sg_id.value
-  # payment_alb_sg_id  = data.aws_ssm_parameter.payment_alb_sg_id.value
 }
