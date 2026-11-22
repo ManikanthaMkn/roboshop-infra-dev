@@ -1,0 +1,40 @@
+
+# Local .terraform directories
+.terraform/
+**/.terraform/
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Allow .tfvars and .tfvars.json files
+# Do not add *.tfvars or *.tfvars.json ignore rules
+
+# Ignore override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore transient lock info files
+.terraform.tfstate.lock.info
+
+# Include override files you wish to add to version control
+# !example_override.tf
+
+# Ignore plan output files if needed
+# *tfplan*
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Optional: Terraform graph output files
+# *.dot
+
+# Optional: plan output files
+# planout
